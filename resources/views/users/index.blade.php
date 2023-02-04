@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Jenis Biota  @endsection
+@section('title') Users  @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('assets/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.css') }}" rel="stylesheet" type="text/css" />
@@ -9,7 +9,7 @@
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') U-Sea @endslot
-@slot('title') Jenis Biota @endslot
+@slot('title') Users @endslot
 @endcomponent
 
 <div class="row">
@@ -18,11 +18,11 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="card-title">Jenis Biota</h4>
-                        <p class="card-title-desc">Ini jenis biota</p>
+                        <h4 class="card-title">Users</h4>
+                        <p class="card-title-desc">Ini Users</p>
                     </div>
                     <div class="col-2 text-right">
-                        <a href="jenis-biota/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a class="btn btn-primary" href="{{ route('users.create') }}">Tambah</a>
                     </div>
                 </div>
                 </div>
@@ -31,21 +31,29 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
-                        <th class="col-10">Jenis Biota</th>
+                        <th class="col-4">Nama</th>
+                        <th class="col-4">Email</th>
+                        <th class="col-2">Role</th>
                         <th class="col-2">Action</th>
                     </tr>
                     </thead>
 
 
                     <tbody>
-                    @foreach($jenisBiotas as $jenisBiota)
-                    <tr>
-                        <td>{{$jenisBiota->jenis_biota}}</td>
-                        <td>
-                            <a href="jenis-biota/edit/{{$jenisBiota->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="jenis-biota/destroy/{{$jenisBiota->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
-                        </td>
-                    </tr>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>
+                                {{$user->roles[0]->name}}
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                    <button onclick="return confirm ('Hapus data?')" type="submit" class="btn btn-danger waves-effect waves-light">Hapus</button>
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

@@ -24,7 +24,7 @@
                                 <form class="mt-4 pt-2" action="{{ route('login') }}" method="POST">
                                     @csrf
                                     <div class="form-floating form-floating-custom mb-4">
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', 'admin@themesdesign.com') }}" id="input-username" placeholder="Enter User Name" name="email">
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="input-username" placeholder="Enter User Name" name="email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                     </div>
 
                                     <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                        <input type="password" class="form-control pe-5 @error('password') is-invalid @enderror" name="password" id="password-input" placeholder="Enter Password" value="123456">
+                                        <input type="password" class="form-control pe-5 @error('password') is-invalid @enderror" name="password" id="password-input" placeholder="Enter Password">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -52,53 +52,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            <div class="form-check font-size-15">
-                                                <input class="form-check-input " type="checkbox" id="remember-check">
-                                                <label class="form-check-label font-size-13" for="remember-check">
-                                                    Remember me
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                    </div>
                                     <div class="mb-3">
                                         <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
                                     </div>
                                 </form>
-
-                                <div class="mt-4 pt-2 text-center">
-                                    <div class="signin-other-title">
-                                        <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign in with -</h5>
-                                    </div>
-
-                                    <ul class="list-inline mb-0">
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-primary text-white border-primary">
-                                                <i class="mdi mdi-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-info text-white border-info">
-                                                <i class="mdi mdi-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-danger text-white border-danger">
-                                                <i class="mdi mdi-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="mt-5 text-center">
-                                    <p class="text-muted mb-0">Don't have an account ? <a href="{{ url('register') }}"
-                                            class="text-primary fw-semibold"> Signup now </a> </p>
-                                </div>
+                                
                             </div>
                             <div class="mt-4 mt-md-5 text-center">
                                 <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Dason   . Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>

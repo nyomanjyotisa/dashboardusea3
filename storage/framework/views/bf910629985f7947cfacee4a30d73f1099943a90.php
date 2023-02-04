@@ -36,7 +36,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user')): ?>
                 <li>
                     <a href="/users">
-                        <i data-feather="anchor"></i>
+                        <i data-feather="user"></i>
                         <span data-key="t-dashboard">Users</span>
                     </a>
                 </li>
@@ -44,7 +44,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role')): ?>
                 <li>
                     <a href="/roles">
-                        <i data-feather="anchor"></i>
+                        <i data-feather="users"></i>
                         <span data-key="t-dashboard">Roles</span>
                     </a>
                 </li>

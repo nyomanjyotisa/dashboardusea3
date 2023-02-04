@@ -30,11 +30,11 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Name:</strong>
-                            <?php echo Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')); ?>
+                            <?php echo Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control mb-4')); ?>
 
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
                         <div class="form-group">
                             <strong>Permission:</strong>
                             <br/>
@@ -46,8 +46,8 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="col-12 btn btn-primary">Submit</button>
                     </div>
                 </div>
                 <?php echo Form::close(); ?>

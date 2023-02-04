@@ -1,9 +1,8 @@
 
 <?php $__env->startSection('title'); ?>
-<?php echo app('translator')->get('translation.Login'); ?>
+<?php echo app('translator')->get('translation.Register'); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-
 <div class="auth-page">
     <div class="container-fluid p-0">
         <div class="row g-0">
@@ -18,21 +17,48 @@
                             </div>
                             <div class="auth-content my-auto">
                                 <div class="text-center">
-                                    <h5 class="mb-0">Welcome Back !</h5>
-                                    <p class="text-muted mt-2">Sign in to continue to Dason.</p>
+                                    <h5 class="mb-0">Register Account</h5>
+                                    <p class="text-muted mt-2">Get your free Dason account now.</p>
                                 </div>
-                                <form class="mt-4 pt-2" action="<?php echo e(route('login')); ?>" method="POST">
+                                <form class="needs-validation mt-4 pt-2" novalidate method="POST" action="<?php echo e(route('register')); ?>" enctype="multipart/form-data">
                                     <?php echo csrf_field(); ?>
                                     <div class="form-floating form-floating-custom mb-4">
-                                        <input type="text" class="form-control <?php $__errorArgs = ['email'];
+                                        <input type="email" class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('email')); ?>" id="input-username" placeholder="Enter User Name" name="email">
+unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" id="input-email" placeholder="Enter Email" required>
                                         <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($message); ?></strong>
+                                            </span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        <label for="input-email">Email</label>
+                                        <div class="form-floating-icon">
+                                            <i data-feather="mail"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-floating form-floating-custom mb-4">
+                                        <input type="text" class="form-control <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="name" value="<?php echo e(old('name')); ?>" id="input-username" placeholder="Enter User Name" required>
+                                        <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -46,19 +72,18 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                         <label for="input-username">Username</label>
                                         <div class="form-floating-icon">
-                                        <i data-feather="users"></i>
+                                           <i data-feather="users"></i>
                                         </div>
                                     </div>
-
-                                    <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                        <input type="password" class="form-control pe-5 <?php $__errorArgs = ['password'];
+                                    <div class="form-floating form-floating-custom mb-4">
+                                        <input type="password" class="form-control <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="password" id="password-input" placeholder="Enter Password">
+unset($__errorArgs, $__bag); ?>" name="password"  id="input-password" placeholder="Enter Password" required>
                                         <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -71,20 +96,90 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
-                                            <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
-                                        </button>
                                         <label for="input-password">Password</label>
                                         <div class="form-floating-icon">
                                             <i data-feather="lock"></i>
                                         </div>
                                     </div>
+                                    <div class="form-floating form-floating-custom mb-4">
+                                        <input type="password" class="form-control <?php $__errorArgs = ['password_confirmation'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="password_confirmation"  id="input-password" placeholder="Enter Password" required>
 
+                                        <label for="input-password">Confirm Password</label>
+                                        <div class="form-floating-icon">
+                                            <i data-feather="lock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating form-floating-custom mb-4">
+                                        <input type="file" class="form-control <?php $__errorArgs = ['avatar'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="avatar"  id="input-avatar" required>
+                                        <?php $__errorArgs = ['avatar'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($message); ?></strong>
+                                            </span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        <div class="form-floating-icon">
+                                            <i data-feather="file"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="mb-0">By registering you agree to the Dason <a href="#" class="text-primary">Terms of Use</a></p>
+                                    </div>
                                     <div class="mb-3">
-                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
+                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
                                     </div>
                                 </form>
-                                
+
+                                <div class="mt-4 pt-2 text-center">
+                                    <div class="signin-other-title">
+                                        <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign up using -</h5>
+                                    </div>
+
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void()"
+                                                class="social-list-item bg-primary text-white border-primary">
+                                                <i class="mdi mdi-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void()"
+                                                class="social-list-item bg-info text-white border-info">
+                                                <i class="mdi mdi-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void()"
+                                                class="social-list-item bg-danger text-white border-danger">
+                                                <i class="mdi mdi-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="mt-5 text-center">
+                                    <p class="text-muted mb-0">Already have an account ? <a href="<?php echo e(url('login')); ?>"
+                                            class="text-primary fw-semibold"> Login </a> </p>
+                                </div>
                             </div>
                             <div class="mt-4 mt-md-5 text-center">
                                 <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Dason   . Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
@@ -196,9 +291,8 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-    <script src="<?php echo e(URL::asset('assets/js/pages/pass-addon.init.js')); ?>"></script>
+    
     <script src="<?php echo e(URL::asset('assets/js/pages/feather-icon.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-
-<?php echo $__env->make('layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\job\dashboardusea3\resources\views/auth/login.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\job\dashboardusea3\resources\views/auth/register.blade.php ENDPATH**/ ?>

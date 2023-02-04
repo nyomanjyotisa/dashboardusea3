@@ -2,8 +2,8 @@
 @section('title') @lang('translation.Basic_Elements')  @endsection
 @section('content')
 @component('components.breadcrumb')
-@slot('li_1') Biota @endslot
-@slot('title') Tambah Roles @endslot
+@slot('li_1') User @endslot
+@slot('title') Ubah Users @endslot
 @endcomponent
 
 <!-- Start row -->
@@ -25,7 +25,7 @@
                 @endif
             </div>
             <div class="card-body">
-                {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
+                {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -33,15 +33,28 @@
                             {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control mb-4')) !!}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Permission:</strong>
-                            <br/>
-                            @foreach($permission as $value)
-                                <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                                {{ $value->name }}</label>
-                            <br/>
-                            @endforeach
+                            <strong>Email:</strong>
+                            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control mb-4')) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Password:</strong>
+                            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control mb-4')) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Confirm Password:</strong>
+                            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control mb-4')) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Role:</strong>
+                            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control mb-4')) !!}
                         </div>
                     </div>
                     <div class="col-12 text-center">

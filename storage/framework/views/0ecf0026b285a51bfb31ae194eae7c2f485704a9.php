@@ -2,7 +2,7 @@
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Biota <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Tambah Roles <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> Tambah Users <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
 <!-- Start row -->
@@ -24,26 +24,42 @@
                 <?php endif; ?>
             </div>
             <div class="card-body">
-                <?php echo Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]); ?>
+                <?php echo Form::open(array('route' => 'users.store','method'=>'POST')); ?>
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Name:</strong>
-                            <?php echo Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')); ?>
+                            <?php echo Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control mb-4')); ?>
 
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Permission:</strong>
-                            <br/>
-                            <?php $__currentLoopData = $permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <label><?php echo e(Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name'))); ?>
+                            <strong>Email:</strong>
+                            <?php echo Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control mb-4')); ?>
 
-                                <?php echo e($value->name); ?></label>
-                            <br/>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Password:</strong>
+                            <?php echo Form::password('password', array('placeholder' => 'Password','class' => 'form-control mb-4')); ?>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Confirm Password:</strong>
+                            <?php echo Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control mb-4')); ?>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Role:</strong>
+                            <?php echo Form::select('roles[]', $roles,[], array('class' => 'form-control mb-4')); ?>
+
                         </div>
                     </div>
                     <div class="col-12 text-center">
@@ -62,4 +78,4 @@
 <script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\job\dashboardusea3\resources\views/roles/edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\job\dashboardusea3\resources\views/users/create.blade.php ENDPATH**/ ?>
