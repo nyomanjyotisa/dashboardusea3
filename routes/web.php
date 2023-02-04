@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\JenisBiotaController;
 use App\Http\Controllers\BiotaController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,8 +48,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+});
+
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-
-
-
-

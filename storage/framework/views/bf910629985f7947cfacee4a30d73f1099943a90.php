@@ -17,20 +17,38 @@
                     </a>
                 </li>
 
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-biota')): ?>
                 <li>
                     <a href="/jenis-biota">
                         <i data-feather="align-justify"></i>
                         <span data-key="t-dashboard">Jenis Biota</span>
                     </a>
                 </li>
-
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('biota')): ?>
                 <li>
                     <a href="/biota">
                         <i data-feather="anchor"></i>
                         <span data-key="t-dashboard">Biota</span>
                     </a>
                 </li>
-
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user')): ?>
+                <li>
+                    <a href="/users">
+                        <i data-feather="anchor"></i>
+                        <span data-key="t-dashboard">Users</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role')): ?>
+                <li>
+                    <a href="/roles">
+                        <i data-feather="anchor"></i>
+                        <span data-key="t-dashboard">Roles</span>
+                    </a>
+                </li>
+                <?php endif; ?>
                 
 
                 <!-- <li class="menu-title" data-key="t-apps"><?php echo app('translator')->get('translation.Apps'); ?></li>

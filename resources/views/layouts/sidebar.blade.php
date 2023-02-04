@@ -17,20 +17,38 @@
                     </a>
                 </li>
 
+                @can('jenis-biota')
                 <li>
                     <a href="/jenis-biota">
                         <i data-feather="align-justify"></i>
                         <span data-key="t-dashboard">Jenis Biota</span>
                     </a>
                 </li>
-
+                @endcan
+                @can('biota')
                 <li>
                     <a href="/biota">
                         <i data-feather="anchor"></i>
                         <span data-key="t-dashboard">Biota</span>
                     </a>
                 </li>
-
+                @endcan
+                @can('user')
+                <li>
+                    <a href="/users">
+                        <i data-feather="anchor"></i>
+                        <span data-key="t-dashboard">Users</span>
+                    </a>
+                </li>
+                @endcan
+                @can('role')
+                <li>
+                    <a href="/roles">
+                        <i data-feather="anchor"></i>
+                        <span data-key="t-dashboard">Roles</span>
+                    </a>
+                </li>
+                @endcan
                 
 
                 <!-- <li class="menu-title" data-key="t-apps">@lang('translation.Apps')</li>
