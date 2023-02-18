@@ -14,7 +14,8 @@ class LokasiController extends Controller
      */
     public function index()
     {
-        //
+        $lokasis = Lokasi::all();
+        return view('lokasi.index', compact("lokasis"));
     }
 
     /**
@@ -24,7 +25,7 @@ class LokasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('lokasi.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class LokasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new = new Lokasi();
+        $new->nama_lokasi = $request->nama_lokasi;
+        $new->save();
+
+        return redirect()->route('lokasi.index');
     }
 
     /**
@@ -55,9 +60,10 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lokasi $lokasi)
+    public function edit($id)
     {
-        //
+        $lokasi = Lokasi::find($id);
+        return view('lokasi.edit', compact("lokasi"));
     }
 
     /**
@@ -67,9 +73,13 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lokasi $lokasi)
+    public function update(Request $request, $id)
     {
-        //
+        $new = Lokasi::find($id);
+        $new->nama_lokasi = $request->nama_lokasi;
+        $new->save();
+
+        return redirect()->route('lokasi.index');
     }
 
     /**
@@ -78,8 +88,11 @@ class LokasiController extends Controller
      * @param  \App\Models\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lokasi $lokasi)
+    public function destroy($id)
     {
-        //
+        $lokasi = Lokasi::find($id);
+        $lokasi->delete();
+
+        return redirect()->route('lokasi.index');
     }
 }

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\JenisBiotaController;
 use App\Http\Controllers\BiotaController;
 use App\Http\Controllers\JenisTemuanNelayanController;
+use App\Http\Controllers\KondisiPerairanController;
+use App\Http\Controllers\LaporanNelayanController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\JenisTemuanNelayan;
@@ -48,6 +51,36 @@ Route::group(['prefix' => 'jenis-temuan', 'as' => 'jenis-temuan.'], function () 
     Route::get('/create', [JenisTemuanNelayanController::class,'create'])->name('create');
     Route::post('/store', [JenisTemuanNelayanController::class,'store'])->name('store');
     Route::post('/update/{id}', [JenisTemuanNelayanController::class,'update'])->name('update');
+});
+
+Route::group(['prefix' => 'lokasi', 'as' => 'lokasi.'], function () {
+    Route::get('/', [LokasiController::class,'index'])->name('index');
+    Route::get('/destroy/{id}', [LokasiController::class,'destroy'])->name('destroy');
+    Route::get('/show{id}', [LokasiController::class,'show'])->name('show');
+    Route::get('/edit/{id}', [LokasiController::class,'edit'])->name('edit');
+    Route::get('/create', [LokasiController::class,'create'])->name('create');
+    Route::post('/store', [LokasiController::class,'store'])->name('store');
+    Route::post('/update/{id}', [LokasiController::class,'update'])->name('update');
+});
+
+Route::group(['prefix' => 'laporan-nelayan', 'as' => 'laporan-nelayan.'], function () {
+    Route::get('/', [LaporanNelayanController::class,'index'])->name('index');
+    Route::get('/destroy/{id}', [LaporanNelayanController::class,'destroy'])->name('destroy');
+    Route::get('/show{id}', [LaporanNelayanController::class,'show'])->name('show');
+    Route::get('/edit/{id}', [LaporanNelayanController::class,'edit'])->name('edit');
+    Route::get('/create', [LaporanNelayanController::class,'create'])->name('create');
+    Route::post('/store', [LaporanNelayanController::class,'store'])->name('store');
+    Route::post('/update/{id}', [LaporanNelayanController::class,'update'])->name('update');
+});
+
+Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], function () {
+    Route::get('/', [KondisiPerairanController::class,'index'])->name('index');
+    Route::get('/destroy/{id}', [KondisiPerairanController::class,'destroy'])->name('destroy');
+    Route::get('/show{id}', [KondisiPerairanController::class,'show'])->name('show');
+    Route::get('/edit/{id}', [KondisiPerairanController::class,'edit'])->name('edit');
+    Route::get('/create', [KondisiPerairanController::class,'create'])->name('create');
+    Route::post('/store', [KondisiPerairanController::class,'store'])->name('store');
+    Route::post('/update/{id}', [KondisiPerairanController::class,'update'])->name('update');
 });
 
 Auth::routes();
