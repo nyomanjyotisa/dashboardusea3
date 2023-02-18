@@ -60,7 +60,7 @@ class TrackController extends Controller
         $new->is_valid = 0;
         $new->save();
 
-        return redirect()->route('track.index');
+        return redirect()->route('track.detail.index', $new->id);
     }
 
     /**

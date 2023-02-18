@@ -85,7 +85,7 @@
                 <li>
                     <a href="/track">
                         <i data-feather="activity"></i>
-                        <span data-key="t-dashboard">Lihat Report Biota</span>
+                        <span data-key="t-dashboard">Report Biota</span>
                     </a>
                 </li>
                 @endcan
@@ -99,7 +99,7 @@
                 @endcan
                 @can('lihat-kondisi-perairan')
                 <li>
-                    <a href="/lihat-report-biota">
+                    <a href="/lihat-kondisi-perairan">
                         <i data-feather="archive"></i>
                         <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
                     </a>
