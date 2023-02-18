@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\JenisBiotaController;
 use App\Http\Controllers\BiotaController;
+use App\Http\Controllers\JenisTemuanNelayanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Models\JenisTemuanNelayan;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,16 @@ Route::group(['prefix' => 'biota', 'as' => 'biota.'], function () {
     Route::get('/create', [BiotaController::class,'create'])->name('create');
     Route::post('/store', [BiotaController::class,'store'])->name('store');
     Route::post('/update/{id}', [BiotaController::class,'update'])->name('update');
+});
+
+Route::group(['prefix' => 'jenis-temuan', 'as' => 'jenis-temuan.'], function () {
+    Route::get('/', [JenisTemuanNelayanController::class,'index'])->name('index');
+    Route::get('/destroy/{id}', [JenisTemuanNelayanController::class,'destroy'])->name('destroy');
+    Route::get('/show{id}', [JenisTemuanNelayanController::class,'show'])->name('show');
+    Route::get('/edit/{id}', [JenisTemuanNelayanController::class,'edit'])->name('edit');
+    Route::get('/create', [JenisTemuanNelayanController::class,'create'])->name('create');
+    Route::post('/store', [JenisTemuanNelayanController::class,'store'])->name('store');
+    Route::post('/update/{id}', [JenisTemuanNelayanController::class,'update'])->name('update');
 });
 
 Auth::routes();

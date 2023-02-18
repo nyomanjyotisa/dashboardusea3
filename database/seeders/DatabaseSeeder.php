@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Lokasi;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -92,5 +93,11 @@ class DatabaseSeeder extends Seeder
         $role4->syncPermissions($permissions4);
 
         $user4->assignRole([$role4->id]);
+
+        
+
+        Lokasi::create([
+            'nama_lokasi' => 'Bikini Bottom',
+        ]);
     }
 }

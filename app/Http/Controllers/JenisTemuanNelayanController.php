@@ -2,21 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JenisBiota;
+use App\Models\JenisTemuanNelayan;
 use Illuminate\Http\Request;
 
-class JenisBiotaController extends Controller
+class JenisTemuanNelayanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    function __construct()
-    {
-         $this->middleware('permission:jenis-biota');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +14,8 @@ class JenisBiotaController extends Controller
      */
     public function index()
     {
-        $jenisBiotas = JenisBiota::all();
-        return view('jenis-biota.index', compact("jenisBiotas"));
+        $jenisTemuans = JenisTemuanNelayan::all();
+        return view('jenis-temuan.index', compact("jenisTemuans"));
     }
 
     /**
@@ -35,7 +25,7 @@ class JenisBiotaController extends Controller
      */
     public function create()
     {
-        return view('jenis-biota.create');
+        return view('jenis-temuan.create');
     }
 
     /**
@@ -47,20 +37,20 @@ class JenisBiotaController extends Controller
     public function store(Request $request)
     {
         // dd('ppp');
-        $new = new JenisBiota();
-        $new->jenis_biota = $request->jenis_biota;
+        $new = new JenisTemuanNelayan();
+        $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
-        return redirect()->route('jenis-biota.index');
+        return redirect()->route('jenis-temuan.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\JenisBiota  $jenisBiota
+     * @param  \App\Models\JenisTemuanNelayan  $jenisTemuanNelayan
      * @return \Illuminate\Http\Response
      */
-    public function show(JenisBiota $jenisBiota)
+    public function show(JenisTemuanNelayan $jenisTemuanNelayan)
     {
         //
     }
@@ -68,42 +58,42 @@ class JenisBiotaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\JenisBiota  $jenisBiota
+     * @param  \App\Models\JenisTemuanNelayan  $jenisTemuanNelayan
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $jenisBiota = JenisBiota::find($id);
-        return view('jenis-biota.edit', compact("jenisBiota"));
+        $jenisTemuan = JenisTemuanNelayan::find($id);
+        return view('jenis-temuan.edit', compact("jenisTemuan"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JenisBiota  $jenisBiota
+     * @param  \App\Models\JenisTemuanNelayan  $jenisTemuanNelayan
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $new = JenisBiota::find($id);
-        $new->jenis_biota = $request->jenis_biota;
+        $new = JenisTemuanNelayan::find($id);
+        $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
-        return redirect()->route('jenis-biota.index');
+        return redirect()->route('jenis-temuan.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JenisBiota  $jenisBiota
+     * @param  \App\Models\JenisTemuanNelayan  $jenisTemuanNelayan
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $jenisBiota = JenisBiota::find($id);
-        $jenisBiota->delete();
+        $jenisTemuan = JenisTemuanNelayan::find($id);
+        $jenisTemuan->delete();
 
-        return redirect()->route('jenis-biota.index');
+        return redirect()->route('jenis-temuan.index');
     }
 }
