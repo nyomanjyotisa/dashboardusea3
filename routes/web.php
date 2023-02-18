@@ -10,8 +10,11 @@ use App\Http\Controllers\KondisiPerairanController;
 use App\Http\Controllers\LaporanNelayanController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TrackController;
+use App\Http\Controllers\TrackDetailController;
 use App\Http\Controllers\UserController;
 use App\Models\JenisTemuanNelayan;
+use App\Models\Track;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +84,26 @@ Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], func
     Route::get('/create', [KondisiPerairanController::class,'create'])->name('create');
     Route::post('/store', [KondisiPerairanController::class,'store'])->name('store');
     Route::post('/update/{id}', [KondisiPerairanController::class,'update'])->name('update');
+});
+
+Route::group(['prefix' => 'track', 'as' => 'track.'], function () {
+    Route::get('/', [TrackController::class,'index'])->name('index');
+    Route::get('/destroy/{id}', [TrackController::class,'destroy'])->name('destroy');
+    Route::get('/show{id}', [TrackController::class,'show'])->name('show');
+    Route::get('/edit/{id}', [TrackController::class,'edit'])->name('edit');
+    Route::get('/create', [TrackController::class,'create'])->name('create');
+    Route::post('/store', [TrackController::class,'store'])->name('store');
+    Route::post('/update/{id}', [TrackController::class,'update'])->name('update');
+
+    Route::group(['prefix' => 'detail/{id}', 'as' => 'detail.'], function () {
+        Route::get('/', [TrackDetailController::class,'index'])->name('index');
+        Route::get('/destroy/{detail}', [TrackDetailController::class,'destroy'])->name('destroy');
+        Route::get('/show{detail}', [TrackDetailController::class,'show'])->name('show');
+        Route::get('/edit/{detail}', [TrackDetailController::class,'edit'])->name('edit');
+        Route::get('/create', [TrackDetailController::class,'create'])->name('create');
+        Route::post('/store', [TrackDetailController::class,'store'])->name('store');
+        Route::post('/update/{detail}', [TrackDetailController::class,'update'])->name('update');
+    });
 });
 
 Auth::routes();
