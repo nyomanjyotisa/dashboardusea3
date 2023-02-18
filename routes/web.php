@@ -76,6 +76,7 @@ Route::group(['prefix' => 'laporan-nelayan', 'as' => 'laporan-nelayan.'], functi
     Route::post('/update/{id}', [LaporanNelayanController::class,'update'])->name('update');
 });
 
+Route::get('/lihat-kondisi-perairan', [KondisiPerairanController::class,'indexNelayan'])->name('indexNelayan');
 Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], function () {
     Route::get('/', [KondisiPerairanController::class,'index'])->name('index');
     Route::get('/destroy/{id}', [KondisiPerairanController::class,'destroy'])->name('destroy');
@@ -86,6 +87,8 @@ Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], func
     Route::post('/update/{id}', [KondisiPerairanController::class,'update'])->name('update');
 });
 
+
+Route::get('/lihat-report-biota', [TrackController::class,'indexNelayan'])->name('indexNelayan');
 Route::group(['prefix' => 'track', 'as' => 'track.'], function () {
     Route::get('/', [TrackController::class,'index'])->name('index');
     Route::get('/destroy/{id}', [TrackController::class,'destroy'])->name('destroy');

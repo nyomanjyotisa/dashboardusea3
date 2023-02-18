@@ -22,6 +22,13 @@ class DatabaseSeeder extends Seeder
             'user',
             'biota',
             'jenis-biota',
+            'jenis-temuan',
+            'kondisi-perairan',
+            'laporan-nelayan',
+            'lokasi',
+            'track',
+            'lihat-report-biota',
+            'lihat-kondisi-perairan',
          ];
       
          foreach ($permissions as $permission) {
@@ -37,9 +44,13 @@ class DatabaseSeeder extends Seeder
     
         $role = Role::create(['name' => 'Admin']);
      
-        $permissions = Permission::pluck('id','id')->all();
+        // $permissions = Permission::where(function ($query) {
+        //                                 $query->where('name', 'biota')
+        //                                 ->orWhere('name', 'jenis-biota')
+        //                                 ->orWhere('name', 'track');
+        //                             })->pluck('id','id');
    
-        $role->syncPermissions($permissions);
+        // $role->syncPermissions($permissions);
      
         $user->assignRole([$role->id]);
 
@@ -53,8 +64,9 @@ class DatabaseSeeder extends Seeder
         $role2 = Role::create(['name' => 'Nelayan']);
 
         $permissions2 = Permission::where(function ($query) {
-                                        $query->where('name', 'biota')
-                                        ->orWhere('name', 'jenis-biota');
+                                        $query->where('name', 'laporan-nelayan')
+                                        ->orWhere('name', 'lihat-report-biota')
+                                        ->orWhere('name', 'lihat-kondisi-perairan');
                                     })->pluck('id','id');
 
         $role2->syncPermissions($permissions2);
@@ -70,7 +82,15 @@ class DatabaseSeeder extends Seeder
         
         $role3 = Role::create(['name' => 'Team U-Fish']);
 
-        $permissions3 = Permission::pluck('id','id')->all();
+        $permissions3 = Permission::where(function ($query) {
+                                    $query->where('name', 'biota')
+                                    ->orWhere('name', 'jenis-biota')
+                                    ->orWhere('name', 'kondisi-perairan')
+                                    ->orWhere('name', 'track')
+                                    ->orWhere('name', 'jenis-biota')
+                                    ->orWhere('name', 'jenis-temuan')
+                                    ->orWhere('name', 'lokasi');
+                                })->pluck('id','id');
 
         $role3->syncPermissions($permissions3);
 
@@ -85,12 +105,12 @@ class DatabaseSeeder extends Seeder
         
         $role4 = Role::create(['name' => 'Time']);
 
-        $permissions4 = Permission::where(function ($query) {
-                                                $query->where('name', 'biota')
-                                                ->orWhere('name', 'jenis-biota');
-                                            })->pluck('id','id');
+        // $permissions4 = Permission::where(function ($query) {
+        //                                         $query->where('name', 'biota')
+        //                                         ->orWhere('name', 'jenis-biota');
+        //                                     })->pluck('id','id');
 
-        $role4->syncPermissions($permissions4);
+        // $role4->syncPermissions($permissions4);
 
         $user4->assignRole([$role4->id]);
 

@@ -13,7 +13,24 @@ class TrackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('permission:lihat-report-biota', ['only' => ['indexNelayan']]);
+        $this->middleware('permission:track', ['except' => ['indexNelayan']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
+    {
+        $tracks = Track::all();
+        return view('track.index', compact("tracks"));
+    }
+
+    public function indexNelayan()
     {
         $tracks = Track::all();
         return view('track.index', compact("tracks"));

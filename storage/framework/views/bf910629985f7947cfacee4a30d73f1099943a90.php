@@ -49,6 +49,62 @@
                     </a>
                 </li>
                 <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-temuan')): ?>
+                <li>
+                    <a href="/jenis-temuan">
+                        <i data-feather="book-open"></i>
+                        <span data-key="t-dashboard">Jenis Temuan</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lokasi')): ?>
+                <li>
+                    <a href="/lokasi">
+                        <i data-feather="airplay"></i>
+                        <span data-key="t-dashboard">Lokasi</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('kondisi-perairan')): ?>
+                <li>
+                    <a href="/kondisi-perairan">
+                        <i data-feather="archive"></i>
+                        <span data-key="t-dashboard">Kondisi Perairan</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('laporan-nelayan')): ?>
+                <li>
+                    <a href="/laporan-nelayan">
+                        <i data-feather="aperture"></i>
+                        <span data-key="t-dashboard">Laporan Nelayan</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
+                <li>
+                    <a href="/track">
+                        <i data-feather="activity"></i>
+                        <span data-key="t-dashboard">Lihat Report Biota</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lihat-report-biota')): ?>
+                <li>
+                    <a href="/lihat-report-biota">
+                        <i data-feather="activity"></i>
+                        <span data-key="t-dashboard">Lihat Report Biota</span>
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lihat-kondisi-perairan')): ?>
+                <li>
+                    <a href="/lihat-report-biota">
+                        <i data-feather="archive"></i>
+                        <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
+                    </a>
+                </li>
+                <?php endif; ?>
                 
 
                 <!-- <li class="menu-title" data-key="t-apps"><?php echo app('translator')->get('translation.Apps'); ?></li>

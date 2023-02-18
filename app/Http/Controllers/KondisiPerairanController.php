@@ -14,7 +14,25 @@ class KondisiPerairanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+         $this->middleware('permission:kondisi-perairan', ['except' => ['indexNelayan']]);
+         $this->middleware('permission:lihat-kondisi-perairan', ['only' => ['indexNelayan']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
+    {
+        $kondisiPerairans = KondisiPerairan::all();
+        return view('kondisi-perairan.index', compact("kondisiPerairans"));
+    }
+
+    
+    public function indexNelayan()
     {
         $kondisiPerairans = KondisiPerairan::all();
         return view('kondisi-perairan.index', compact("kondisiPerairans"));

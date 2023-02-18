@@ -49,6 +49,62 @@
                     </a>
                 </li>
                 @endcan
+                @can('jenis-temuan')
+                <li>
+                    <a href="/jenis-temuan">
+                        <i data-feather="book-open"></i>
+                        <span data-key="t-dashboard">Jenis Temuan</span>
+                    </a>
+                </li>
+                @endcan
+                @can('lokasi')
+                <li>
+                    <a href="/lokasi">
+                        <i data-feather="airplay"></i>
+                        <span data-key="t-dashboard">Lokasi</span>
+                    </a>
+                </li>
+                @endcan
+                @can('kondisi-perairan')
+                <li>
+                    <a href="/kondisi-perairan">
+                        <i data-feather="archive"></i>
+                        <span data-key="t-dashboard">Kondisi Perairan</span>
+                    </a>
+                </li>
+                @endcan
+                @can('laporan-nelayan')
+                <li>
+                    <a href="/laporan-nelayan">
+                        <i data-feather="aperture"></i>
+                        <span data-key="t-dashboard">Laporan Nelayan</span>
+                    </a>
+                </li>
+                @endcan
+                @can('track')
+                <li>
+                    <a href="/track">
+                        <i data-feather="activity"></i>
+                        <span data-key="t-dashboard">Lihat Report Biota</span>
+                    </a>
+                </li>
+                @endcan
+                @can('lihat-report-biota')
+                <li>
+                    <a href="/lihat-report-biota">
+                        <i data-feather="activity"></i>
+                        <span data-key="t-dashboard">Lihat Report Biota</span>
+                    </a>
+                </li>
+                @endcan
+                @can('lihat-kondisi-perairan')
+                <li>
+                    <a href="/lihat-report-biota">
+                        <i data-feather="archive"></i>
+                        <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
+                    </a>
+                </li>
+                @endcan
                 
 
                 <!-- <li class="menu-title" data-key="t-apps">@lang('translation.Apps')</li>

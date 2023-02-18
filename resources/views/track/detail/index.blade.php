@@ -21,9 +21,11 @@
                         <h4 class="card-title">Track Detail</h4>
                         <p class="card-title-desc">Ini Track Detail</p>
                     </div>
+                    @can('track')
                     <div class="col-2 text-right">
                         <a href="/track/detail/{{$trackId}}/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
+                    @endcan
                 </div>
                 </div>
             <div class="card-body">
@@ -43,15 +45,17 @@
                     <tbody>
                     @foreach($trackDetails as $detail)
                     <tr>
-                        <td>{{$detail->id_biota}}</td>
-                        <td>{{$detail->id_lokasi}}</td>
+                        <td>{{$detail->biota->nama_biota}}</td>
+                        <td>{{$detail->lokasi->nama_lokasi}}</td>
                         <td>
                             <img src="/storage/{{$detail->image}}" alt="" width="200px">
                         </td>
                         <td>{{$detail->keterangan}}</td>
                         <td>
+                            @can('track')
                             <a href="/track/detail/{{$trackId}}/edit/{{$detail->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                             <a onclick="return confirm ('Hapus data?')" href="/track/detail/{{$trackId}}/destroy/{{$detail->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach

@@ -43,7 +43,7 @@
                     @foreach($laporanNelayans as $laporan)
                     <tr>
                         <td>{{$laporan->tanggal}}</td>
-                        <td>{{$laporan->id_lokasi}}</td>
+                        <td>{{$laporan->lokasi->nama_lokasi}}</td>
                         <td>{{$laporan->isi_laporan}}</td>
                         <td>
                             <a href="laporan-nelayan/edit/{{$laporan->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
