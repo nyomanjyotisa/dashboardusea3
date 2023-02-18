@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_lokasi')->constrained('lokasis','id');
             $table->foreignId('id_staff')->constrained('users','id');
-            $table->string('kodisi');
+            $table->date('tanggal');
+            $table->string('kondisi');
             $table->text('uraian');
             $table->timestamps();
         });
