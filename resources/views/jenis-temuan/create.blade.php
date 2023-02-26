@@ -15,7 +15,7 @@
                 <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
             </div>
             <div class="card-body">
-                <form action="{{ route('jenis-temuan.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.jenis-temuan.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-4">
                         <label class="form-label" for="jenis_temuan">Jenis Temuan</label>

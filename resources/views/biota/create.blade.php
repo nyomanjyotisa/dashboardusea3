@@ -17,7 +17,7 @@
                 <p class="card-title-desc">Harap isi semua data dengan lengkap agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="{{ route('biota.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.biota.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-4">
                         <label class="form-label" for="biota">Biota</label>

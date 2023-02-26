@@ -15,7 +15,7 @@ class BiotaController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:biota');
+         $this->middleware('permission:biota', ['except' => ['indexNelayan']]);
     }
     /**
      * Display a listing of the resource.
@@ -26,6 +26,12 @@ class BiotaController extends Controller
     {
         $biotas = Biota::all();
         return view('biota.index', compact("biotas"));
+    }
+
+    public function indexNelayan()
+    {
+        $biotas = Biota::all();
+        return view('biota.indexNelayan', compact("biotas"));
     }
 
     /**
@@ -55,7 +61,7 @@ class BiotaController extends Controller
         $new->image = $image_path;
         $new->save();
 
-        return redirect()->route('biota.index');
+        return redirect()->route('dashboard.biota.index');
     }
 
     /**
@@ -95,7 +101,7 @@ class BiotaController extends Controller
         $new->nama_biota = $request->nama_biota;
         $new->save();
 
-        return redirect()->route('biota.index');
+        return redirect()->route('dashboard.biota.index');
     }
 
     /**
@@ -109,6 +115,6 @@ class BiotaController extends Controller
         $biota = Biota::find($id);
         $biota->delete();
 
-        return redirect()->route('biota.index');
+        return redirect()->route('dashboard.biota.index');
     }
 }

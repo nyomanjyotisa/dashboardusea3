@@ -15,7 +15,6 @@ class TrackController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:lihat-report-biota', ['only' => ['indexNelayan']]);
         $this->middleware('permission:track', ['except' => ['indexNelayan']]);
     }
 
@@ -60,7 +59,7 @@ class TrackController extends Controller
         $new->is_valid = 0;
         $new->save();
 
-        return redirect()->route('track.detail.index', $new->id);
+        return redirect()->route('dashboard.track.detail.index', $new->id);
     }
 
     /**
@@ -99,7 +98,7 @@ class TrackController extends Controller
         $new->tanggal = $request->tanggal;
         $new->save();
 
-        return redirect()->route('track.index');
+        return redirect()->route('dashboard.track.index');
     }
 
     /**
@@ -113,6 +112,6 @@ class TrackController extends Controller
         $lokasi = Track::find($id);
         $lokasi->delete();
 
-        return redirect()->route('track.index');
+        return redirect()->route('dashboard.track.index');
     }
 }

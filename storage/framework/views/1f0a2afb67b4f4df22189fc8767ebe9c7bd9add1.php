@@ -22,7 +22,7 @@
                     </div>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
                     <div class="col-2 text-right">
-                        <a href="/track/detail/<?php echo e($trackId); ?>/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a href="/dashboard/track/detail/<?php echo e($trackId); ?>/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -52,8 +52,8 @@
                         <td><?php echo e($detail->keterangan); ?></td>
                         <td>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
-                            <a href="/track/detail/<?php echo e($trackId); ?>/edit/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="/track/detail/<?php echo e($trackId); ?>/destroy/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
+                            <a href="/dashboard/track/detail/<?php echo e($trackId); ?>/edit/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/<?php echo e($trackId); ?>/destroy/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                             <?php endif; ?>
                         </td>
                     </tr>

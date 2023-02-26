@@ -13,4 +13,8 @@ class LaporanNelayan extends Model
     public function lokasi(){
         return $this->belongsTo(Lokasi::class,"id_lokasi","id");
     }
+    
+    public function jenis_temuan(){
+        return $this->belongsTo(JenisTemuanNelayan::class,"id_jenis_temuan","id");
+    }
 }

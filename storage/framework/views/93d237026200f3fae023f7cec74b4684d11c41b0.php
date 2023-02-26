@@ -9,6 +9,7 @@
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?php echo e(URL::asset('assets/images/favicon.ico')); ?>">
+    <link rel="stylesheet" href="<?php echo e(URL::asset('landing/css/cyan.css')); ?>" id="theme-color">
     <?php echo $__env->make('layouts.head-css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>
 
@@ -17,7 +18,7 @@
 <?php echo $__env->yieldSection(); ?>
     <!-- Begin page -->
     <div id="layout-wrapper">
-        <?php echo $__env->make('layouts.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('layouts.topbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php echo $__env->make('layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -25,6 +26,7 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
+                    <br>
                     <?php echo $__env->yieldContent('content'); ?>
                 </div>
                 <!-- container-fluid -->

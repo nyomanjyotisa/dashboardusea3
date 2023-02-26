@@ -15,7 +15,7 @@
                 <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
             </div>
             <div class="card-body">
-                <form action="{{ route('laporan-nelayan.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.laporan-nelayan.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-4">
                         <label class="form-label">Lokasi</label>
@@ -23,6 +23,16 @@
                             <option></option>   
                             @foreach ($lokasis as $lokasi)
                                 <option value="{{ $lokasi->id }}">{{ $lokasi->nama_lokasi }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Jenis Temuan</label>
+                        <select name="id_jenis_temuan" class="form-control">
+                            <option></option>   
+                            @foreach ($jenisTemuans as $jenisTemuan)
+                                <option value="{{ $jenisTemuan->id }}">{{ $jenisTemuan->jenis_temuan }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -14,7 +14,7 @@
                 <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('laporan-nelayan.store')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('dashboard.laporan-nelayan.store')); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label class="form-label">Lokasi</label>
@@ -22,6 +22,16 @@
                             <option></option>   
                             <?php $__currentLoopData = $lokasis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lokasi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($lokasi->id); ?>"><?php echo e($lokasi->nama_lokasi); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Jenis Temuan</label>
+                        <select name="id_jenis_temuan" class="form-control">
+                            <option></option>   
+                            <?php $__currentLoopData = $jenisTemuans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $jenisTemuan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($jenisTemuan->id); ?>"><?php echo e($jenisTemuan->jenis_temuan); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>

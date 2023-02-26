@@ -16,7 +16,7 @@
                 <p class="card-title-desc">Harap isi semua data dengan lengkap agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('biota.store')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('dashboard.biota.store')); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label class="form-label" for="biota">Biota</label>

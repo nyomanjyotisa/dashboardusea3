@@ -23,7 +23,7 @@
                     </div>
                     @can('track')
                     <div class="col-2 text-right">
-                        <a href="/track/detail/{{$trackId}}/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a href="/dashboard/track/detail/{{$trackId}}/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
                     @endcan
                 </div>
@@ -53,8 +53,8 @@
                         <td>{{$detail->keterangan}}</td>
                         <td>
                             @can('track')
-                            <a href="/track/detail/{{$trackId}}/edit/{{$detail->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="/track/detail/{{$trackId}}/destroy/{{$detail->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
+                            <a href="/dashboard/track/detail/{{$trackId}}/edit/{{$detail->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/{{$trackId}}/destroy/{{$detail->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                             @endcan
                         </td>
                     </tr>

@@ -50,7 +50,7 @@ class LokasiController extends Controller
         $new->nama_lokasi = $request->nama_lokasi;
         $new->save();
 
-        return redirect()->route('lokasi.index');
+        return redirect()->route('dashboard.lokasi.index');
     }
 
     /**
@@ -89,7 +89,7 @@ class LokasiController extends Controller
         $new->nama_lokasi = $request->nama_lokasi;
         $new->save();
 
-        return redirect()->route('lokasi.index');
+        return redirect()->route('dashboard.lokasi.index');
     }
 
     /**
@@ -103,6 +103,6 @@ class LokasiController extends Controller
         $lokasi = Lokasi::find($id);
         $lokasi->delete();
 
-        return redirect()->route('lokasi.index');
+        return redirect()->route('dashboard.lokasi.index');
     }
 }

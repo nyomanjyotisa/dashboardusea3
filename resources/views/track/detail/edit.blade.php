@@ -15,12 +15,40 @@
                 <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
             </div>
             <div class="card-body">
-                <form action="{{ route('track.update', $track->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.track.detail.update', [$id, $trackDetail->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-4">
-                        <label class="form-label" for="isi_laporan">Tanggal</label>
-                        <input name="tanggal" id="tanggal" class="form-control" required="" value="{{$track->tanggal}}" type="date">
+                        <label class="form-label">Biota</label>
+                        <select name="id_biota" class="form-control">
+                            <option></option>   
+                            @foreach ($biotas as $biota)
+                                <option value="{{ $biota->id }}" @if($biota->id == $trackDetail->id_biota) selected @endif>{{ $biota->nama_biota }}</option>
+                            @endforeach
+                        </select>
                     </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Lokasi</label>
+                        <select name="id_lokasi" class="form-control">
+                            <option></option>   
+                            @foreach ($lokasis as $lokasi)
+                                <option value="{{ $lokasi->id }}" @if($lokasi->id == $trackDetail->id_lokasi) selected @endif >{{ $lokasi->nama_lokasi }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label" for="image">Gambar</label>
+                        <input type="file" name="image" class="form-control">
+                    </div>                    
+
+                    <div class="mb-4">
+                        <label class="form-label" for="keterangan">Keterangan</label>
+                        <textarea class="form-control" type="text" id="keterangan" name="keterangan" rows="4" >{{$trackDetail->keterangan}}</textarea>
+                    </div>
+
+                    
+                    <input type="hidden" name="id_track" class="form-control" value="{{$id}}">
 
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>

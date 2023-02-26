@@ -32,6 +32,7 @@
                     <tr>
                         <th class="col-2">Tanggal</th>
                         <th class="col-3">Lokasi</th>
+                        <th class="col-3">Jenis Temuan</th>
                         <th class="col-5">Isi Laporan</th>
                         <th class="col-2">Action</th>
                     </tr>
@@ -43,6 +44,7 @@
                     <tr>
                         <td><?php echo e($laporan->tanggal); ?></td>
                         <td><?php echo e($laporan->lokasi->nama_lokasi); ?></td>
+                        <td><?php echo e($laporan->jenis_temuan->jenis_temuan); ?></td>
                         <td><?php echo e($laporan->isi_laporan); ?></td>
                         <td>
                             <a href="laporan-nelayan/edit/<?php echo e($laporan->id); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>

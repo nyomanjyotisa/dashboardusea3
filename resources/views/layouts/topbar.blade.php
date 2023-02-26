@@ -1,5 +1,7 @@
 <header id="page-topbar">
+    
     <div class="navbar-header">
+    @if (Auth::check())
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
@@ -279,5 +281,38 @@
             </div>
 
         </div>
+        @else
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top sticky-navigation">
+            <a class="navbar-brand mx-auto" href="index.html">
+                U-SEA
+            </a>
+            <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" 
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#about">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#services">Fitur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#process">Cara Kerja</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/dashboard/biota/nelayan">Akses Nelayan</a>
+                    </li>
+                </ul>
+                <form class="form-inline">
+                    <p class="mb-0 mx-3"><a class="page-scroll font-weight-bold" href="#contact">Hubungi Kami</a></p>
+                </form>
+            </div>
+        </nav>
+        @endif
     </div>
 </header>

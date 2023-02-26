@@ -54,7 +54,7 @@ class TrackDetailController extends Controller
         $new->image = $path;
         $new->save();   
 
-        return redirect()->route('track.detail.index', $request->id_track);
+        return redirect()->route('dashboard.track.detail.index', $request->id_track);
     }
 
     /**
@@ -79,7 +79,7 @@ class TrackDetailController extends Controller
         $trackDetail = TrackDetail::find($detail);
         $lokasis = Lokasi::all();
         $biotas = Biota::all();
-        return view('track.detail.edit', $id, compact("trackDetail", "lokasis", "biotas"));
+        return view('track.detail.edit',compact("id", "trackDetail", "lokasis", "biotas"));
     }
 
     /**
@@ -89,7 +89,7 @@ class TrackDetailController extends Controller
      * @param  \App\Models\TrackDetail  $trackDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $detail)
+    public function update(Request $request, $id, $detail)
     {
         $new = TrackDetail::find($detail);
         $new->id_track = $request->id_track;
@@ -104,7 +104,7 @@ class TrackDetailController extends Controller
 
         $new->save();
 
-        return redirect()->route('track.detail.index');
+        return redirect()->route('dashboard.track.detail.index', $id);
     }
 
     /**
@@ -118,6 +118,6 @@ class TrackDetailController extends Controller
         $lokasi = TrackDetail::find($detail);
         $lokasi->delete();
 
-        return redirect()->route('track.detail.index', $id);
+        return redirect()->route('dashboard.track.detail.index', $id);
     }
 }

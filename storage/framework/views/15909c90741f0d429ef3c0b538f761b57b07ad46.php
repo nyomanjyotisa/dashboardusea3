@@ -14,7 +14,7 @@
                 <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('jenis-biota.store')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('dashboard.jenis-biota.store')); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label class="form-label" for="jenis_biota">Jenis Biota</label>

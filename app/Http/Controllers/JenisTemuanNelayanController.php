@@ -51,7 +51,7 @@ class JenisTemuanNelayanController extends Controller
         $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
-        return redirect()->route('jenis-temuan.index');
+        return redirect()->route('dashboard.jenis-temuan.index');
     }
 
     /**
@@ -90,7 +90,7 @@ class JenisTemuanNelayanController extends Controller
         $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
-        return redirect()->route('jenis-temuan.index');
+        return redirect()->route('dashboard.jenis-temuan.index');
     }
 
     /**
@@ -104,6 +104,6 @@ class JenisTemuanNelayanController extends Controller
         $jenisTemuan = JenisTemuanNelayan::find($id);
         $jenisTemuan->delete();
 
-        return redirect()->route('jenis-temuan.index');
+        return redirect()->route('dashboard.jenis-temuan.index');
     }
 }

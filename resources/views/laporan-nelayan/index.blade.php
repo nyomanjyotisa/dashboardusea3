@@ -33,6 +33,7 @@
                     <tr>
                         <th class="col-2">Tanggal</th>
                         <th class="col-3">Lokasi</th>
+                        <th class="col-3">Jenis Temuan</th>
                         <th class="col-5">Isi Laporan</th>
                         <th class="col-2">Action</th>
                     </tr>
@@ -44,6 +45,7 @@
                     <tr>
                         <td>{{$laporan->tanggal}}</td>
                         <td>{{$laporan->lokasi->nama_lokasi}}</td>
+                        <td>{{$laporan->jenis_temuan->jenis_temuan}}</td>
                         <td>{{$laporan->isi_laporan}}</td>
                         <td>
                             <a href="laporan-nelayan/edit/{{$laporan->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>

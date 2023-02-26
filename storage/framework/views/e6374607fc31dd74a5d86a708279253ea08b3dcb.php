@@ -14,7 +14,7 @@
                 <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('kondisi-perairan.update', $kondisiPerairan->id)); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('dashboard.kondisi-perairan.update', $kondisiPerairan->id)); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
 
                     <div class="mb-4">

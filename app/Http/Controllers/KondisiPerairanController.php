@@ -17,7 +17,6 @@ class KondisiPerairanController extends Controller
     function __construct()
     {
          $this->middleware('permission:kondisi-perairan', ['except' => ['indexNelayan']]);
-         $this->middleware('permission:lihat-kondisi-perairan', ['only' => ['indexNelayan']]);
     }
 
     /**
@@ -65,7 +64,7 @@ class KondisiPerairanController extends Controller
         $new->uraian = $request->uraian;
         $new->save();
 
-        return redirect()->route('kondisi-perairan.index');
+        return redirect()->route('dashboard.kondisi-perairan.index');
     }
 
     /**
@@ -108,7 +107,7 @@ class KondisiPerairanController extends Controller
         $new->uraian = $request->uraian;
         $new->save();
 
-        return redirect()->route('kondisi-perairan.index');
+        return redirect()->route('dashboard.kondisi-perairan.index');
     }
 
     /**
@@ -122,6 +121,6 @@ class KondisiPerairanController extends Controller
         $lokasi = KondisiPerairan::find($id);
         $lokasi->delete();
 
-        return redirect()->route('kondisi-perairan.index');
+        return redirect()->route('dashboard.kondisi-perairan.index');
     }
 }

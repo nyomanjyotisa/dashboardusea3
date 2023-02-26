@@ -26,6 +26,8 @@ use App\Models\Track;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
 Route::group(['prefix' => 'jenis-biota', 'as' => 'jenis-biota.'], function () {
     Route::get('/', [JenisBiotaController::class,'index'])->name('index');
     Route::get('/destroy/{id}', [JenisBiotaController::class,'destroy'])->name('destroy');
@@ -38,6 +40,7 @@ Route::group(['prefix' => 'jenis-biota', 'as' => 'jenis-biota.'], function () {
 
 Route::group(['prefix' => 'biota', 'as' => 'biota.'], function () {
     Route::get('/', [BiotaController::class,'index'])->name('index');
+    Route::get('/nelayan', [BiotaController::class,'indexNelayan'])->name('index.nelayan');
     Route::get('/destroy/{id}', [BiotaController::class,'destroy'])->name('destroy');
     Route::get('/show{id}', [BiotaController::class,'show'])->name('show');
     Route::get('/edit/{id}', [BiotaController::class,'edit'])->name('edit');
@@ -109,7 +112,11 @@ Route::group(['prefix' => 'track', 'as' => 'track.'], function () {
     });
 });
 
-Auth::routes();
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+});
+
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
@@ -119,9 +126,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
-});
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
+
+});
+
+
+Route::get('/', function () {
+    return view('landing');
+});
+Auth::routes();

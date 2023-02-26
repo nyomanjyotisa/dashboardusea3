@@ -9,6 +9,7 @@
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ URL::asset('landing/css/cyan.css') }}" id="theme-color">
     @include('layouts.head-css')
 </head>
 
@@ -17,7 +18,7 @@
 @show
     <!-- Begin page -->
     <div id="layout-wrapper">
-        @include('layouts.topbar')
+            @include('layouts.topbar')
         @include('layouts.sidebar')
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -25,6 +26,7 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
+                    <br>
                     @yield('content')
                 </div>
                 <!-- container-fluid -->

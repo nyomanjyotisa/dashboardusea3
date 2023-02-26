@@ -7,19 +7,39 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu"><?php echo app('translator')->get('translation.Menu'); ?></li>
                 
+                <?php if(!Auth::check()): ?>
+                <li class="menu-title" data-key="t-menu"></li>
                 <li>
-                    <a href="/index">
-                        <i data-feather="home"></i>
-                        <!-- <span class="badge rounded-pill bg-soft-success text-success float-end">9+</span> -->
-                        <span data-key="t-dashboard"><?php echo app('translator')->get('translation.Dashboards'); ?></span>
+                    <a href="/dashboard/biota/nelayan">
+                        <i data-feather="anchor"></i>
+                        <span data-key="t-dashboard">Lihat Biota</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="/dashboard/laporan-nelayan">
+                        <i data-feather="aperture"></i>
+                        <span data-key="t-dashboard">Laporan Nelayan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/lihat-report-biota">
+                        <i data-feather="activity"></i>
+                        <span data-key="t-dashboard">Lihat Report Biota</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/lihat-kondisi-perairan">
+                        <i data-feather="archive"></i>
+                        <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
+                    </a>
+                </li>
+                <?php else: ?>
+                <li class="menu-title" data-key="t-menu"><?php echo app('translator')->get('translation.Menu'); ?></li>
+                <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-biota')): ?>
                 <li>
-                    <a href="/jenis-biota">
+                    <a href="/dashboard/jenis-biota">
                         <i data-feather="align-justify"></i>
                         <span data-key="t-dashboard">Jenis Biota</span>
                     </a>
@@ -27,7 +47,7 @@
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('biota')): ?>
                 <li>
-                    <a href="/biota">
+                    <a href="/dashboard/biota">
                         <i data-feather="anchor"></i>
                         <span data-key="t-dashboard">Biota</span>
                     </a>
@@ -35,7 +55,7 @@
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user')): ?>
                 <li>
-                    <a href="/users">
+                    <a href="/dashboard/users">
                         <i data-feather="user"></i>
                         <span data-key="t-dashboard">Users</span>
                     </a>
@@ -43,7 +63,7 @@
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role')): ?>
                 <li>
-                    <a href="/roles">
+                    <a href="/dashboard/roles">
                         <i data-feather="users"></i>
                         <span data-key="t-dashboard">Roles</span>
                     </a>
@@ -51,7 +71,7 @@
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-temuan')): ?>
                 <li>
-                    <a href="/jenis-temuan">
+                    <a href="/dashboard/jenis-temuan">
                         <i data-feather="book-open"></i>
                         <span data-key="t-dashboard">Jenis Temuan</span>
                     </a>
@@ -59,7 +79,7 @@
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lokasi')): ?>
                 <li>
-                    <a href="/lokasi">
+                    <a href="/dashboard/lokasi">
                         <i data-feather="airplay"></i>
                         <span data-key="t-dashboard">Lokasi</span>
                     </a>
@@ -67,41 +87,17 @@
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('kondisi-perairan')): ?>
                 <li>
-                    <a href="/kondisi-perairan">
+                    <a href="/dashboard/kondisi-perairan">
                         <i data-feather="archive"></i>
                         <span data-key="t-dashboard">Kondisi Perairan</span>
                     </a>
                 </li>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('laporan-nelayan')): ?>
-                <li>
-                    <a href="/laporan-nelayan">
-                        <i data-feather="aperture"></i>
-                        <span data-key="t-dashboard">Laporan Nelayan</span>
-                    </a>
-                </li>
-                <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
                 <li>
-                    <a href="/track">
+                    <a href="/dashboard/track">
                         <i data-feather="activity"></i>
                         <span data-key="t-dashboard">Report Biota</span>
-                    </a>
-                </li>
-                <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lihat-report-biota')): ?>
-                <li>
-                    <a href="/lihat-report-biota">
-                        <i data-feather="activity"></i>
-                        <span data-key="t-dashboard">Lihat Report Biota</span>
-                    </a>
-                </li>
-                <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lihat-kondisi-perairan')): ?>
-                <li>
-                    <a href="/lihat-kondisi-perairan">
-                        <i data-feather="archive"></i>
-                        <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
                     </a>
                 </li>
                 <?php endif; ?>

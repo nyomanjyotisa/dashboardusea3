@@ -22,7 +22,7 @@
                         <p class="card-title-desc">Ini Roles</p>
                     </div>
                     <div class="col-2 text-right">
-                        <a class="btn btn-primary" href="{{ route('roles.create') }}">Tambah</a>
+                        <a class="btn btn-primary" href="{{ route('dashboard.roles.create') }}">Tambah</a>
                     </div>
                 </div>
                 </div>
@@ -42,7 +42,7 @@
                         <tr>
                             <td>{{$role->name}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                                <a class="btn btn-primary" href="{{ route('dashboard.roles.edit',$role->id) }}">Edit</a>
                                 {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
                                     <button onclick="return confirm ('Hapus data?')" type="submit" class="btn btn-danger waves-effect waves-light">Hapus</button>
                                 {!! Form::close() !!}
